@@ -1,15 +1,19 @@
 //stringCalculator.js
-function add (number){
-	if(number == ""){
+function add (numbers){ //returns 0 on an empty string
+	if(numbers == ""){
 		return 0;
 	}	
 
-	if(number.includes(",")){
-		var numberArray = number.split(",");
-		return parseInt(numberArray[0]) + parseInt(numberArray[1]);
+	if(numbers.includes(",")){ //decide on a delimiter
+		var numberArray = numbers.split(",");
+		var total = 0;
+		for(var i = 0; i < numberArray.length; i++){ //loop through length of array
+			total += parseInt(numberArray[i]);
+		}
+		return parseInt(total);
 	}
 	else{
-	return parseInt(number);	
+	return parseInt(numbers);	//return number if only one number
 	}
 }
 
