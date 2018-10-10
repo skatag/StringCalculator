@@ -24,3 +24,7 @@ it("should return sum of numbers with new line used as a delimiter", () => {
 it("should return sum of numbers with both delimiters used", () => {
 	expect(add("3, 3\n 4")).toBe(10);
 });
+
+it("should not allow negative numbers", function(){
+      expect( function(){ add("-1,2,3"); } ).toThrow(new Error("negatives not allowed"));
+    });
