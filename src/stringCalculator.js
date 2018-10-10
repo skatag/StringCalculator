@@ -4,10 +4,6 @@
 function add (numbers){ //returns 0 on an empty string
 	
 
-	if(parseInt(numbers) < 0){
-			throw new Error('negatives not allowed');	
-	}
-	
 	if(numbers == ""){
 		return 0;
 	}	
@@ -15,12 +11,19 @@ function add (numbers){ //returns 0 on an empty string
 	if(numbers.includes("\n")){
 		numbers = numbers.replace(/\n/g, ","); //change "\n" to "," so only one loop needed
 	}
+	
 	if(numbers.includes(",")){ //decide on a delimiter
 		var numberArray = (numbers.split(","));
 		var total = 0;
+		var negatives = [];
 		for(var i = 0; i < numberArray.length; i++){
-			 //loop through length of array
+			 if(numberArray[i] < 0){
+			 	negatives.push(numberArray[i]);
+			 	throw new Error('Negatives not allowed: ' + negatives)
+			 }
+			 else{
 				total += parseInt(numberArray[i]);
+			}
 		}
 	
 		return parseInt(total);

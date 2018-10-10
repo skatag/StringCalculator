@@ -26,5 +26,9 @@ it("should return sum of numbers with both delimiters used", () => {
 });
 
 it("should not allow negative numbers", function(){
-      expect( function(){ add("-1,2,3"); } ).toThrow(new Error("negatives not allowed"));
-    });
+      expect( function(){ add("-1,2,3"); } ).toThrow(new Error("Negatives not allowed: " +"-1"));
+});
+
+it("should display negative numbers with error message", function(){
+      expect( function(){ add("-1,2,3"); } ).toThrow(new Error("Negatives not allowed: " + "-1"));
+});
